@@ -1,23 +1,18 @@
-//THIS IS BACKUP OF THE AVERAGING FUNCTION FROM TASK 1! DO NOT EDIT!
-//      * Difference between BACK_1.3_avg2.s and BACK_1.3_avg1.s: 
-//        BACK_1.3_avg2.s divides total sum by total count; 
-//        BACK_1.3_avg1.s divides total sum by array length.
-
 include("basics");
+include("BACK_median.s");
+include("BACK_sort.s");
 
 function avg(items)
     {
     var i;
     var total = 0;
-    var count = 0;
 
     for-each(i,items)
         {
         total = total + i;
-        count = count + 1;
         }
         
-    real(total) / count;
+    real(total) / length(items);
     }
 
 
@@ -36,14 +31,16 @@ function toIntegers(strings)
 
 function main()
     {
-    var numbers,result;
+    var numbers,result,med;
     if (length(SwayArgs) == 1)
         {
         throw(:useError,"Try sway prog1.s 1 2 3 4 5");
         }
     numbers = toIntegers(tail(SwayArgs));
     result = avg(numbers);
+    med = median(numbers);
     println("The average of ",numbers," is ",result);
+    println("The median of ",numbers," is ",med);
     }
 
 main();
